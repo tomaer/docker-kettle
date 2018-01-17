@@ -19,7 +19,7 @@ RUN apk update && apk upgrade && apk add --no-cache --update curl && \
     mkdir -p /opt/pdi-ce/datas /opt/pdi-ce/jobs && chmod +x /opt/pdi-ce/datas && chmod +x /opt/pdi-ce/jobs && \
     addgroup -S hadoop && adduser -h /home/hive -s /bin/ash -D -G hadoop hive && \
     echo "$KETTLE_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-    chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/data-integration \
+    chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/data-integration && \
     chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/datas && \
     chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/jobs
 
