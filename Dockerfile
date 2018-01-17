@@ -19,7 +19,7 @@ RUN apk update && apk upgrade && apk add --no-cache --update curl && \
 
 
 ENV PATH=$PDI_HOME/data-integration:$PATH
-RUN /opt/pdi-ce/entrypoint.sh
+RUN /opt/pdi-ce/entrypoint.sh $KETTLE_USER $KETTLE_GROUP
 VOLUME ["/home/${KETTLE_USER}","/opt/pdi-ce/datas","/opt/pdi-ce/jobs"]
 USER $KETTLE_USER
 ENTRYPOINT ["tail -lf /opt/pdi-ce/account"]
