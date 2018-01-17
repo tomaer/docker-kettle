@@ -19,7 +19,7 @@ RUN apk update && apk upgrade && apk add --no-cache --update curl && \
     rm -rf $PDI_HOME/data-integration/samples $PDI_HOME/data-integration/docs /tmp/pdi-ce-${PDI_VERSION}.zip && \
     mkdir -p /opt/pdi-ce/datas /opt/pdi-ce/jobs && chmod +x /opt/pdi-ce/datas && chmod +x /opt/pdi-ce/jobs && \
     addgroup -S $KETTLE_GROUP && adduser -h /home/$KETTLE_USER -s /bin/ash -D -G $KETTLE_GROUP $KETTLE_USER && \
-    chmod 777 $PDI_HOME/entrypoint.sh && \
+    chmod 777 $PDI_HOME/entrypoint.sh && chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/entrypoint.sh && \
     echo "$KETTLE_USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/data-integration && \
     chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/datas && \
@@ -29,4 +29,4 @@ RUN apk update && apk upgrade && apk add --no-cache --update curl && \
 ENV PATH=$PDI_HOME/data-integration:$PATH
 VOLUME ["/home/${KETTLE_USER}","/opt/pdi-ce/datas","/opt/pdi-ce/jobs"]
 USER $KETTLE_USER
-ENTRYPOINT["/opt/pdi-ce/entrypoint.sh"]
+ENTRYPOINT ["/opt/pdi-ce/entrypoint.sh"]
