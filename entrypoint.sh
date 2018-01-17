@@ -7,5 +7,4 @@ if [ ! -d "/opt/pdi-ce/account" ]; then
         chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/datas && \
         chown -R $KETTLE_USER:$KETTLE_GROUP $PDI_HOME/jobs && touch /opt/pdi-ce/account
 fi
-echo "Container PDI-CE Runing" && su - hive && tail -lf /opt/pdi-ce/account
 
